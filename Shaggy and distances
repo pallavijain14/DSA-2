@@ -1,0 +1,18 @@
+public class Solution {
+    public int solve(int[] A) {
+        if (A.length == 1) {
+            return -1;
+        }
+        // stores <Value, Index> pair
+        HashMap < Integer, Integer > map = new HashMap < Integer, Integer > ();
+        int result = A.length;
+        for (int i = 0; i < A.length; i++) {
+            // checks if A[i] has occurred previously
+            if (map.containsKey(A[i])) {
+                result = Math.min(result, i - map.get(A[i]));
+            }
+            map.put(A[i], i);
+        }
+        return (result == A.length) ? -1 : result;
+    }
+}
