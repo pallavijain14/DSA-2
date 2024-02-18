@@ -1,0 +1,10 @@
+public class Solution {
+    public int solve(int[][] A) {
+        HashSet<String> uniquePoints = new HashSet<>();
+        for (int[] point : A) {
+            String pointStr = point[0] + "," + point[1];
+            uniquePoints.add(pointStr);
+        }
+        return uniquePoints.size();
+    }
+}
