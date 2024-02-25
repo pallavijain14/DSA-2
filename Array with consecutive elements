@@ -1,0 +1,27 @@
+public class Solution {
+
+    public int solve(ArrayList < Integer > A) {
+
+        // sort the given array
+
+        Collections.sort(A);
+
+        int minn = A.get(0);
+
+        // check if the elements are consecutive
+
+        for (int x: A) {
+
+            if (x != minn)
+
+                return 0;
+
+            minn++;
+
+        }
+
+        return 1;
+
+    }
+
+}
