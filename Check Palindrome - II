@@ -1,0 +1,12 @@
+public class Solution { 
+    public int solve(String A) {
+        int[] freq = new int[26]; 
+        for (int i = 0; i < A.length(); i++)     
+                        freq[A.charAt(i) - 97]++; 
+            int odd = 0; 
+           for (int a: freq) if (a % 2 == 1) odd++;
+            if (odd > 1)
+              return 0; 
+               return 1; 
+      } 
+}
