@@ -1,0 +1,46 @@
+public class Solution {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public int solve(final String A, final String B) {
+        int n = A.length();
+        int m = B.length();
+       
+        int ans = 0;
+       
+        long p = 31; 
+        int mod = 1000000009;
+        
+        long hashB = 0;
+        
+        for (int i = 0; i < m; i++)
+        {
+            hashB = (((hashB * p) % mod ) + (B.charAt(i) - 'a' + 1)) % mod;
+        }
+        
+        long curHashA = 0;
+        long pp = 1;
+        
+        for (int i = 0; i < m - 1;i++){
+            pp = (pp * p) % mod;
+        }
+    
+        for (int i = 0; i < m; i++)
+        {
+            curHashA = ((curHashA * p) % mod + (A.charAt(i) - 'a' + 1)) % mod;
+        }
+        
+        if(curHashA == hashB){
+            ans++;
+        }
+        
+        for (int i = m; i < n; i++){
+            long prvHashA = curHashA;
+            curHashA = ((((prvHashA - (A.charAt(i - m) - 'a' + 1) * pp) % mod) * p) % mod + (A.charAt(i) - 'a' + 1)) % mod;
+            if(curHashA < 0) curHashA += mod;
+            if(curHashA == hashB){
+                ans++;
+            }
+        }
+        
+        return ans;
+    }
+}
